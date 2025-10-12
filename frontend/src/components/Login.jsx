@@ -23,7 +23,7 @@ const LogIn = () => {
         e.preventDefault();
         const { email, password } = logInInfo;
         if(!email || !password){
-            return handleError('All field  email and password is required');
+            return handleError('All field  email and passwrd is required');
         }
         try {
             const url ="http://localhost:8080/auth/login";
