@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+
+
+
+@font-face {
+  font-family: Gilroy-regular;
+  src: url(./assets/Gilroy-Regular.ttf);
+}
+@font-face {
+  font-family: Gilroy-bold;
+  src: url(./assets/Gilroy-Heavy.ttf);
+}
+::selection{
+  color: peru;
+  background-color:  rgb(255, 242, 219);
+}
+
+body{
+  background-color:  #fffbf0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Gilroy-regular;
+}

@@ -1,0 +1,6 @@
+
+# IDE & System Files
+.vscode/
+.idea/
+.DS_Store
+.env
