@@ -18,7 +18,6 @@
 ### Frontend
 - React (Vite)
 - Tailwind CSS
-- Axios
 - React Router DOM
 
 ### Backend
@@ -115,6 +114,7 @@ Test image upload and search endpoints.
 
 Akanksha Singh
 akanksh70010@gmail.com
+
 
 
 
