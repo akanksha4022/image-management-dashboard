@@ -64,12 +64,18 @@ npm run dev
 
 ### 🌐 API Endpoints
 Method	Endpoint	Description	Protected
-POST	/api/auth/register	Register a new user	❌ No
+POST	/api/auth/register	Register a new user	❌ 
+
 POST	/api/auth/login	Login user	❌ No
+
 POST	/api/posts	Create new post (image)	✅ Yes
+
 GET	/api/posts	Get all posts	❌ No
+
 GET	/api/posts/search?tag=	Search posts by tag	❌ No
+
 GET	/api/posts/filter?color=	Filter posts by color	❌ No
+
 DELETE	/api/posts/:id	Delete a post	✅ Yes
 
 Full API documentation is provided in the API_Documentation.docx file.
@@ -101,6 +107,7 @@ Test image upload and search endpoints.
 
 Akanksha Singh
 📧 akanksh70010@gmail.com
+
 
 
 
