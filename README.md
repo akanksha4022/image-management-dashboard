@@ -44,7 +44,9 @@ npm install
 
 ## Create a .env file in the backend folder:
 PORT = 8080
+
 MONGO_CONN = "mongodb+srv://akanksha70010_db_user:22TnuNDKXpyEnAaK@cluster0.qygapsw.mongodb.net/auth-db?retryWrites=true&w=majority&appName=Cluster0"
+
 JWT_SECRET = "igotyou"
 
 ## Start the backend:
@@ -99,6 +101,7 @@ Test image upload and search endpoints.
 
 Akanksha Singh
 📧 akanksh70010@gmail.com
+
 
 
 
