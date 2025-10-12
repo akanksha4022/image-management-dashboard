@@ -30,7 +30,6 @@
 
 ---
 
----
 
 ## 🧰 Installation & Setup
 
@@ -53,6 +52,8 @@ JWT_SECRET = "igotyou"
 
 npm start
 
+---
+
 ### 3️⃣ Install Frontend Dependencies
 cd ../frontend
 npm install
@@ -61,6 +62,8 @@ npm install
 ### Run the frontend:
 
 npm run dev
+
+---
 
 ### 🌐 API Endpoints
 Method	    Endpoint	           Description	            Protected
@@ -81,6 +84,8 @@ DELETE	  /api/posts/:id	        Delete a post	          ✅ Yes
 
 Full API documentation is provided in the API_Documentation.docx file.
 
+---
+
 ### 🧪 Testing with Postman
 
 Import the Postman_Collection.json file in Postman.
@@ -90,6 +95,8 @@ Register or login to get the JWT token.
 Use the token in the Authorization header (no “Bearer” keyword).
 
 Test image upload and search endpoints.
+
+---
 
 
 ### 📎 Deliverables
@@ -107,7 +114,8 @@ Test image upload and search endpoints.
 ### 👩‍💻 Author
 
 Akanksha Singh
-📧 akanksh70010@gmail.com
+akanksh70010@gmail.com
+
 
 
 
