@@ -47,6 +47,10 @@ MONGO_CONN = "mongodb+srv://akanksha70010_db_user:22TnuNDKXpyEnAaK@cluster0.qyga
 
 JWT_SECRET = "igotyou"
 
+### sample login and password
+email : user@gmail.com
+password: 123456789
+
 ## Start the backend:
 
 npm start
@@ -114,6 +118,7 @@ Test image upload and search endpoints.
 
 Akanksha Singh
 akanksh70010@gmail.com
+
 
 
 
