@@ -7,6 +7,7 @@ import { Navigate } from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom'
 import RefreshHandler from './components/RefreshHandler'
 import { useState } from 'react'
+import Page from './components/Page'
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
     <div className='App'>
       <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
       <Routes>
-        <Route path='/' element={<Navigate to="/login" />} />
+        <Route path='/' element={<Navigate to="/page" />} />
+        <Route path='/page' element={<Page />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/dashboard' element={<PrivateRoute element={<Dashboard />} />} />
