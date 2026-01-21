@@ -51,7 +51,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="container p-7 border-2 border-[#ffcfca] w-[30vw] mt-[8rem] rounded-3xl bg-[#fffbf0]">
+    <div className="container p-7 border-2 border-[#ffcfca] w-[90%] md:w-[30vw]
+ mt-[8rem] rounded-3xl bg-[#fffbf0]">
       <h1 className="font-bold text-3xl text-center p-4">Sign Up</h1>
       <div className="flex items-center justify-center w-full">
         <form onSubmit={handleSignUp} className="w-full">

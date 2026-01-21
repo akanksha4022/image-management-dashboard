@@ -12,8 +12,10 @@ const RefreshHandler = ({setIsAuthenticated}) => {
                 location.pathname === '/login'||
                 location.pathname === '/signup'
             ){
-                navigate('/dashboard', {replace: false})
+                navigate('/dashboard', {replace: true})
             }
+        }else{
+            setIsAuthenticated(false);
         }
     },[location, navigate, setIsAuthenticated]);
   return (

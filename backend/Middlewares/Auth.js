@@ -9,7 +9,7 @@ const ensureAuthenticated = (req, res, next)=>{
     const token = auth.startsWith('Bearer ') ? auth.split(' ')[1] : auth;
 
     try{
-        const decoded = jwt.verify(auth, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
         next();
     } catch(err){

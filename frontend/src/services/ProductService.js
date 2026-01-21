@@ -1,13 +1,25 @@
 import API from '../api';
 
-export const getProducts = () => API.get('/products');
+const getAuthHeader = () => ({
+  Authorization: `Bearer ${localStorage.getItem('token')}`,
+});
+
+export const getProducts = () => API.get('/products',{
+  headers: getAuthHeader(),
+});
 
 export const createProduct = (data) => API.post('/products', data, {
-  headers: { 'Content-Type': 'multipart/form-data' },
+  headers: { 
+    ...getAuthHeader(),
+    'Content-Type': 'multipart/form-data' },
 });
 
 export const updateProduct = (id, data) => API.put(`/products/${id}`, data, {
-  headers: { 'Content-Type': 'multipart/form-data' },
+  headers: { 
+    ...getAuthHeader(),
+    'Content-Type': 'multipart/form-data' },
 });
 
-export const deleteProduct = (id) => API.delete(`/products/${id}`);
+export const deleteProduct = (id) => API.delete(`/products/${id}`,{
+  headers: getAuthHeader(),
+});

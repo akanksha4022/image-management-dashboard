@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
 
@@ -6,6 +6,8 @@ const tagColors = [
   'bg-pink-200', 'bg-yellow-200', 'bg-green-200', 'bg-blue-200',
   'bg-purple-200', 'bg-pink-300', 'bg-yellow-300', 'bg-green-300'
 ];
+
+const API_URL = "http://localhost:8080";
 
 const Dashboard = () => {
   const [images, setImages] = useState([]);
@@ -15,7 +17,17 @@ const Dashboard = () => {
   const [allTags, setAllTags] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState('');
 
+  const fileInputRef = useRef(null);
+
+
   useEffect(() => {
+
+    const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = '/login';
+    return;
+  }
+
     setLoggedInUser(localStorage.getItem('loggedInUser'));
     fetchImages();
     fetchTags();
@@ -23,25 +35,29 @@ const Dashboard = () => {
 
   const fetchImages = async (search = '') => {
     try {
-      const res = await fetch(`http://localhost:8080/products${search ? `?search=${search}` : ''}`, {
-        headers: { Authorization: localStorage.getItem('token') },
+      const res = await fetch(`${API_URL}/products${search ? `?search=${search}` : ''}`, {
+        headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+},
       });
       const data = await res.json();
       setImages(data);
     } catch (err) {
-      handleError(err);
+      handleError(err.message || "Something went wrong")
+;
     }
   };
 
   const fetchTags = async () => {
     try {
-      const res = await fetch('http://localhost:8080/products/tags', {
-        headers: { Authorization: localStorage.getItem('token') },
+      const res = await fetch(`${API_URL}/products/tags`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       const data = await res.json();
       setAllTags(data);
     } catch (err) {
-      handleError(err);
+      handleError(err.message || "Something went wrong")
+;
     }
   };
 
@@ -56,7 +72,7 @@ const Dashboard = () => {
 
       const res = await fetch('http://localhost:8080/products', {
         method: 'POST',
-        headers: { Authorization: localStorage.getItem('token') },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         body: formData,
       });
 
@@ -64,10 +80,12 @@ const Dashboard = () => {
       handleSuccess('Image uploaded!');
       setSelectedImage(null);
       setTags('');
+      fileInputRef.current.value = "";
       fetchImages();
       fetchTags();
     } catch (err) {
-      handleError(err);
+      handleError(err.message || "Something went wrong")
+;
     }
   };
 
@@ -75,14 +93,15 @@ const Dashboard = () => {
     try {
       const res = await fetch(`http://localhost:8080/products/${id}`, {
         method: 'DELETE',
-        headers: { Authorization: localStorage.getItem('token') },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       if (!res.ok) throw new Error('Delete failed');
       handleSuccess('Image deleted');
       fetchImages();
       fetchTags();
     } catch (err) {
-      handleError(err);
+      handleError(err.message || "Something went wrong")
+;
     }
   };
 
@@ -123,6 +142,7 @@ const Dashboard = () => {
       <div className=' p-7 min-h-screen'>
         <form onSubmit={handleUpload} className="flex flex-wrap gap-4 mb-6">
         <input
+          ref={fileInputRef}
           type="file"
           onChange={(e) => setSelectedImage(e.target.files[0])}
           className="border-2 p-2 rounded-xl border-[#ffcfca] text-[#648d49]"
@@ -191,6 +211,28 @@ const Dashboard = () => {
               >
                 ×
               </button>
+              <div className="p-2">
+                {/* AI Description */}
+                {img.description && (
+                  <p className="text-sm text-gray-600">
+                    {img.description}
+                  </p>
+                )}
+
+                {/* AI Tags */}
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {img.tags?.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="text-xs bg-[#ffcfca] text-black px-2 py-1 rounded-full"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+
             </div>
           ))
         ) : (
