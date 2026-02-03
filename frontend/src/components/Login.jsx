@@ -26,7 +26,7 @@ const LogIn = () => {
             return handleError('All field  email and passwrd is required');
         }
         try {
-            const url ="http://localhost:8080/auth/login";
+            const url =`${import.meta.env.VITE_API_URL}/auth/login`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {

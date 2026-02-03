@@ -7,7 +7,7 @@ const tagColors = [
   'bg-purple-200', 'bg-pink-300', 'bg-yellow-300', 'bg-green-300'
 ];
 
-const API_URL = "http://localhost:8080";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Dashboard = () => {
   const [images, setImages] = useState([]);
@@ -70,7 +70,7 @@ const Dashboard = () => {
       formData.append('image', selectedImage);
       if (tags) formData.append('tags', tags);
 
-      const res = await fetch('http://localhost:8080/products', {
+      const res = await fetch(`${API_URL}/products`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         body: formData,
@@ -91,7 +91,7 @@ const Dashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8080/products/${id}`, {
+      const res = await fetch(`${API_URL}/products/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
