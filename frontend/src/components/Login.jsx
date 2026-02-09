@@ -8,15 +8,19 @@ const LogIn = () => {
         password:""
     });
 
+    console.log("API URL =", import.meta.env.VITE_API_URL);
+    const API_URL = import.meta.env.VITE_API_URL;
+
     const navigate = useNavigate();
 
     const handleChange = (e)=>{
         const {name, value} = e.target;
-        console.log(name, value);
+        //console.log(name, value);
         const copyLogInInfo= {...logInInfo};
         copyLogInInfo[name] = value;
         setLogInInfo(copyLogInInfo);
     }
+
     console.log('Login info', logInInfo)
     
     const handleLogIn = async(e)=>{
@@ -26,7 +30,7 @@ const LogIn = () => {
             return handleError('All field  email and passwrd is required');
         }
         try {
-            const url =`${import.meta.env.VITE_API_URL}/auth/login`;
+            const url =`${API_URL}/auth/login`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {

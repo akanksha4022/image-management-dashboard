@@ -10,6 +10,8 @@ const Signup = () => {
     password: ''
   });
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,7 +26,7 @@ const Signup = () => {
       return handleError('All fields (name, email, password) are required');
     }
     try {
-      const url = `${import.meta.env.VITE_API_URL}/auth/signup`;
+      const url = `${API_URL}/auth/signup`;
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
